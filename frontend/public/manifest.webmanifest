@@ -1,0 +1,17 @@
+{
+  "name": "شیپلی ایران — بازارگاه هوشمند حمل بار",
+  "short_name": "شیپلی ایران",
+  "description": "بار خود را ثبت کنید و از ناوگان احراز هویت‌شده پیشنهاد قیمت بگیرید.",
+  "start_url": "/fa",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#080910",
+  "theme_color": "#7C5CFF",
+  "orientation": "portrait-primary",
+  "dir": "rtl",
+  "lang": "fa",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

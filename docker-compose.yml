@@ -1,0 +1,33 @@
+services:
+  backend:
+    build: ./backend
+    container_name: shiply-backend
+    environment:
+      DATABASE_URL: sqlite:///./data/shiply.db
+      SECRET_KEY: ${SECRET_KEY:-shiply-iran-dev-secret-change-me}
+    volumes:
+      - backend_data:/app/data
+    ports:
+      - "8021:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8021}
+    container_name: shiply-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "3021:3021"
+    restart: unless-stopped
+
+volumes:
+  backend_data:
